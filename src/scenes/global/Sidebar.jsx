@@ -81,7 +81,7 @@ const Sidebar = () => {
                 ml="15px"
               >
                 <Typography variant="h3" color={colors.grey[100]}>
-                  ADMINIS
+                  Admin Panel
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
@@ -98,7 +98,7 @@ const Sidebar = () => {
                   width="200px"
                   height="150px"
                   src={ProfilePic}
-                  style={{ cursor: "pointer", borderRadius: "20%" }}
+                  style={{ cursor: "pointer", borderRadius: "35%" }}
                 />
               </Box>
               <Box textAlign="center">
