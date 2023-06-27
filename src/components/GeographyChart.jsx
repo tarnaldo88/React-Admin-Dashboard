@@ -1,16 +1,42 @@
 import { useTheme } from "@mui/material";
 import { ResponsiveChoropleth } from "@nivo/geo";
 import { mockGeographyData as data} from "../data/mockData";
+import {geoFeatures} from "../data/mockGeoFeatures";
 import { tokens } from "../theme";
 
 const GeoChart = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-    
+
     return (
         <ResponsiveChoropleth
         data={data}
-        features="/* please have a look at the description for usage */"
+        theme={{
+            axis: {
+                domain: {
+                    line:{
+                        stroke: colors.grey[100]
+                    }
+                },
+                legend: {
+                    text:{
+                        fill: colors.grey[100]
+                    }
+                },
+                ticks: {
+                    line:{
+                        stroke: colors.grey[100],
+                        strokeWidth: 1,
+                    }
+                }
+            },
+            legends: {
+                text:{
+                    fill: colors.grey[100],
+                }
+            }
+        }}
+        features={geoFeatures.features}
         margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
         colors="nivo"
         domain={[ 0, 1000000 ]}
