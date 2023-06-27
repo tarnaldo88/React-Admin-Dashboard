@@ -13,6 +13,7 @@ import Bar from "./scenes/bar";
 import FAQ from "./scenes/faq";
 // import Geography from "./scenes/geography";
 import Pie from "./scenes/pie";
+import Line from "./scenes/line";
 
 function App() {
 
@@ -35,7 +36,7 @@ function App() {
                     {/* <Route path="/calendar" element={<Calendar />} />   */}
                     <Route path="/bar" element={<Bar />} /> 
                     <Route path="/pie" element={<Pie />} /> 
-                    {/* <Route path="/line" element={<Line />} />   */}
+                    <Route path="/line" element={<Line />} />  
                     <Route path="/faq" element={<FAQ />} />  
                     {/* <Route path="/Geography" element={<Geography />} />   */}                    
                   </Routes>        
