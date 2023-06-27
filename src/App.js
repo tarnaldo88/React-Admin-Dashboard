@@ -7,12 +7,12 @@ import Dashboard from "./scenes/dashboard";
 import Team from "./scenes/Team";
 import Invoices from "./scenes/invoices";
 import Contacts from "./scenes/contacts";
-// import Bar from "./scenes/global/bar";
+// import Bar from "./scenes/bar";
 import Form from "./scenes/Form";
-// import FAQ from "./scenes/global/faq";
-// import Geography from "./scenes/global/geography";
-// import Calendar from "./scenes/global/calendar";
-// import Pie from "./scenes/global/pie";
+// import FAQ from "./scenes/faq";
+// import Geography from "./scenes/geography";
+// import Calendar from "./scenes/calendar";
+// import Pie from "./scenes/pie";
 
 function App() {
 
