@@ -6,7 +6,6 @@ import listPlugin from "@fullcalendar/list";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
-
 import {
   Box,
   List,
@@ -18,7 +17,7 @@ import {
 import Header from "../../components/Header";
 import { tokens } from "../../theme";
 
-const Calendars = () => {
+const Calendar = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const [currentEvents, setCurrentEvents] = useState([]);
@@ -47,38 +46,76 @@ const Calendars = () => {
 
     return (
         <Box m="20px">
-            <Header title={"Calendar"} subtitle= {"Full Calendar Interactive Page"} />
+            <Header title="Calendar" subtitle="Full Calendar Interactive Page" />
 
-            <Box display={"flex"} justifyContent={"space-between"}>
-                {/* Calendar SideBar */}
-                <Box flex= "1 1 20%" backgroundColor={colors.primary[400]} p="15px" borderRadius={"4px"}>
-                    <Typography variant="h5">
-                        Events
-                    </Typography>
-                    <List>
-                        {currentEvents.map((event) => {
-                            <ListItem key = {event.id} sx={{backgroundColor: colors.greenAccent[500], margin: "10px 0", borderRadius:"2px"}}>
-                                <ListItemText 
+            <Box display="flex" justifyContent="space-between">
+
+                {/* CALENDAR SIDEBAR */}
+                <Box
+                flex="1 1 20%"
+                backgroundColor={colors.primary[400]}
+                p="15px"
+                borderRadius="4px"
+                >
+                    <Typography variant="h5">Events</Typography>
+                        <List>
+                            {currentEvents.map((event) => (
+                            <ListItem
+                                key={event.id}
+                                sx={{
+                                backgroundColor: colors.greenAccent[500],
+                                margin: "10px 0",
+                                borderRadius: "2px",
+                                }}
+                            >
+                                <ListItemText
                                 primary={event.title}
-                                secondary= {
+                                secondary={
                                     <Typography>
-                                        {formatDate(event.start,
-                                            {
-                                                year: "numeric",
-                                                month: "numeric",
-                                                day:"numeric",
-                                            }    
-                                        )}
+                                    {formatDate(event.start, {
+                                        year: "numeric",
+                                        month: "short",
+                                        day: "numeric",
+                                    })}
                                     </Typography>
                                 }
                                 />
-                            </ListItem>                            
-                        })}
+                            </ListItem>
+                        ))}
                     </List>
+                </Box>
+
+                {/* Calendar */}
+                <Box m={"15%"}>
+                    <FullCalendar 
+                        height={"75vh"}
+                        plugins={[
+                            dayGridPlugin,
+                            timeGridPlugin,
+                            interactionPlugin,
+                            listPlugin
+                        ]}
+                        headerToolbar={{
+                            left:'prev, next today',
+                            center:"title",
+                            right:"dayGridMonth, timeGridWeek, listMonth"
+                        }}
+                        initialView='"dayGridMonth'
+                        editable={true}
+                        selectable={true}
+                        selectMirror={true}
+                        select={handleDateClick}
+                        eventClick={handleEventClick}
+                        eventsSet={(events) => setCurrentEvents}
+                        initialEvents={[
+                            {id: "1234", title: "All-day event", date:"2023-6-26"},
+                            {id: "4321", title: "timed event", date:"2023-6-27"},
+                        ]}
+                    />
                 </Box>
             </Box>
         </Box>
     );
 };
 
-export default Calendars;
+export default Calendar;
